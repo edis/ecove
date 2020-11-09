@@ -2,6 +2,8 @@ import React from 'react';
 
 export default () => {
     return (
-        <h1>Hello</h1>
+        <div className={"ui container"}>
+            <h1>Hello</h1>
+        </div>
     );
 };
