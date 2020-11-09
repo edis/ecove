@@ -1,9 +1,10 @@
 import React from 'react';
+import SearchBar from "./SearchBar";
 
 export default () => {
     return (
         <div className={"ui container"}>
-            <h1>Hello</h1>
+            <SearchBar />
         </div>
     );
 };
