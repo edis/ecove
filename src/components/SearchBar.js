@@ -9,7 +9,7 @@ const SearchBar = ({ onTermSubmit }) => {
     }
 
     return (
-        <div className={"search-bar ui segment"} style={{ marginTop: '2rem'}}>
+        <div className={"search-bar ui segment"} style={{ margin: '2rem 0'}}>
             <form className={"ui form"} onSubmit={onFormSubmit}>
                 <div className={"field"}>
                     <label>Search Products</label>

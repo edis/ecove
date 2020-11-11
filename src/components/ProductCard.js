@@ -4,13 +4,10 @@ const ProductCard = ({ title, image }) => {
     return (
         <div className="card">
             <div className="image">
-                <img src={image} width={"220px"}/>
+                <img src={image} style={{ width: "100%", height: "300px", maxWidth: "auto"}}/>
             </div>
             <div className="content">
                 <div className="header">{title}</div>
-                <div className="meta">
-                    <span className="date">Coworker</span>
-                </div>
             </div>
         </div>
     );
