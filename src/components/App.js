@@ -6,20 +6,15 @@ import Spinner from "./Spinner";
 
 export default () => {
     const [products, setProducts]  = useState([]);
-    const [ref, setRef]  = useState('');
     const isInitialMount = useRef(true)
 
-    useEffect(() => {
-        if (isInitialMount.current){
+    const renderContent = () => {
+        if (isInitialMount.current) {
             isInitialMount.current = false;
         }else{
-            setRef(renderContent());
-        }
-    }, [products]);
-
-    const renderContent = () => {
-        if (products !== undefined){
-            return products.length === 0 ? <Spinner/> : <ProductList products={products}/>;
+            if (products !== undefined){
+                return products.length === 0 ? <Spinner/> : <ProductList products={products}/>;
+            }
         }
     };
 
@@ -31,14 +26,15 @@ export default () => {
             }
         });
 
-        setProducts(response.data.productSummaries);
+        console.log(response)
+        setProducts(response.data.itemSummaries);
     };
 
 
     return (
         <div className={"ui container"}>
             <SearchBar onTermSubmit={onTermSubmit} />
-            {ref}
+            {renderContent()}
         </div>
     );
 };
