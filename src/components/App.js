@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import ebay from "../api/ebay";
 import SearchBar from "./SearchBar";
 import ProductList from "./ProductList";
 import Spinner from "./Spinner";
+import PaginationProp from "./Pagination";
 
 export default () => {
     const [products, setProducts]  = useState([]);
@@ -13,7 +14,16 @@ export default () => {
             isInitialMount.current = false;
         }else{
             if (products !== undefined){
-                return products.length === 0 ? <Spinner/> : <ProductList products={products}/>;
+                if (products.length === 0){
+                   return <Spinner />;
+                }else{
+                    return (
+                        <div>
+                            <ProductList products={products} />
+                            <PaginationProp />
+                        </div>
+                    );
+                }
             }
         }
     };
@@ -26,10 +36,8 @@ export default () => {
             }
         });
 
-        console.log(response)
-        setProducts(response.data.itemSummaries);
+        setProducts(response.data.productSummaries);
     };
-
 
     return (
         <div className={"ui container"}>
