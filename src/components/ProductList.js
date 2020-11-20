@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 const ProductList = ({ products }) => {
     const renderedList = products.map(product => {
         if (product.image !== undefined){
-            return <ProductCard key={product.epid} title={product.title} image={product.image.imageUrl}/>;
+            return <ProductCard key={product.asin} title={product.title} image={product.image} link={product.link} price={product.price.value} />;
         }
     });
 

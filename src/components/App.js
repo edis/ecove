@@ -7,10 +7,11 @@ import PaginationProp from "./Pagination";
 
 export default () => {
     const [products, setProducts]  = useState([]);
-    const isInitialMount = useRef(true)
+    const isInitialMount = useRef(true);
 
     const renderContent = () => {
         if (isInitialMount.current) {
+            console.log(process.env.REACT_APP_API_KEY);
             isInitialMount.current = false;
         }else{
             if (products !== undefined){
@@ -30,13 +31,15 @@ export default () => {
 
     const onTermSubmit = async term => {
         setProducts([]);
-        const response = await ebay.get('/search', {
+
+        const response = await ebay.get('/', {
             params: {
-                q: term
+                search_term: term,
             }
         });
 
-        setProducts(response.data.productSummaries);
+        console.log(response);
+        setProducts(response.data.search_results);
     };
 
     return (
