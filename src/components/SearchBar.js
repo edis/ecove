@@ -5,8 +5,11 @@ const SearchBar = ({ onTermSubmit }) => {
 
     const onFormSubmit = event => {
         event.preventDefault();
-        onTermSubmit(term);
-    }
+        if(term){
+            onTermSubmit(term);
+            setTerm("");
+        }
+    };
 
     return (
         <div className={"search-bar ui segment"} style={{ margin: '2rem 0'}}>
@@ -15,6 +18,7 @@ const SearchBar = ({ onTermSubmit }) => {
                     <label>Search Products</label>
                     <input
                         type={"text"}
+                        value={term}
                         onChange={(e) => setTerm(e.target.value)}
                         className={"input"}
                     />
