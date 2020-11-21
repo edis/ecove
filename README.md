@@ -27,4 +27,9 @@ netlify deploy
 ```
 
 ## Application Diagram
-<img src="images/ecove-diagram.png">
+<img src="images/ecove-diagram.png" height="400px">
+
+## Application
+<img src="images/welcome.png">
+<img src="images/products_list.png">
+
