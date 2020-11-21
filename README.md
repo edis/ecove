@@ -23,7 +23,9 @@ npm run start
 ## Deploy to Netlify
 To deploy the site to netlify, run the command below in your terminal 
 ```shell script
+npm run build
 netlify deploy
+netlify deploy --prod
 ```
 
 ## Application Diagram
