@@ -30,6 +30,6 @@ netlify deploy
 <img src="images/ecove-diagram.png" style="border: 1px solid black" >
 
 ## Application
-<img src="images/welcome.png" style="border: 1px solid black" >
-<img src="images/products_list.png" style="border: 1px solid black" >
+<img src="images/welcome.png">
+<kbd><img src="images/products_list.png"></kbd>
 
