@@ -9,7 +9,7 @@ npm install
 ```
 
 ## Environment Variables 
-To properly use the application create a .env file and add your [![rainforest api](https://rainforestapi.com/)] key in the following format: 
+To properly use the application create a .env file and add your [rainforest api](https://rainforestapi.com/) key in the following format: 
 ```dotenv
 REACT_APP_API_KEY="<API_KEY>"
 ```
