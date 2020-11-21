@@ -1,5 +1,5 @@
 # ecove
-Shopping Catalog using Rainforest API 🛍 <br />
+Shopping Catalog using Rainforest API 🛍 <br /><br />
 [![Netlify Status](https://api.netlify.com/api/v1/badges/de285322-e16c-4b8c-ac5d-841f047fe746/deploy-status)](https://app.netlify.com/sites/ecove/deploys)
 
 ## Installing Dependencies 
@@ -25,3 +25,5 @@ To deploy the site to netlify, run the command below in your terminal
 ```shell script
 netlify deploy
 ```
+
+## Application Diagram
