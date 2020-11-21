@@ -27,3 +27,4 @@ netlify deploy
 ```
 
 ## Application Diagram
+<img src="images/ecove-diagram.png">
