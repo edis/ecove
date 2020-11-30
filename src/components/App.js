@@ -19,14 +19,12 @@ export default () => {
     }, [pageNum, products]);
 
     const isInitialMount = useRef(true);
-
     const isError = useRef(false);
 
     const renderContent = () => {
         if (isInitialMount.current) {
             isInitialMount.current = false;
         }else{
-            // if (products !== undefined){
                 if (products.length === 0){
                     if (!isError.current) {
                         return <Spinner/>;
@@ -42,7 +40,6 @@ export default () => {
                         </div>
                     );
                 }
-            // }
         }
     };
 
