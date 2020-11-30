@@ -4,9 +4,11 @@ import SearchBar from "./SearchBar";
 import ProductList from "./ProductList";
 import Spinner from "./Spinner";
 import PaginationProp from "./Pagination";
+import Error from "./Error";
 
 export default () => {
-    // page num
+    const perPageItems = 9;
+
     const [pageTitle, setPageTitle] = useState('Welcome to Ecove 🌎👋');
     const [pageNum, setPageNum] = useState(1);
     const [products, setProducts]  = useState([]);
@@ -18,36 +20,49 @@ export default () => {
 
     const isInitialMount = useRef(true);
 
+    const isError = useRef(false);
+
     const renderContent = () => {
         if (isInitialMount.current) {
             isInitialMount.current = false;
         }else{
-            if (products !== undefined){
+            // if (products !== undefined){
                 if (products.length === 0){
-                   return <Spinner />;
+                    if (!isError.current) {
+                        return <Spinner/>;
+                    }else{
+                        isError.current = false;
+                        return <Error /> ;
+                    }
                 }else{
                     return (
                         <div>
-                            <ProductList products={products.slice((pageNum - 1) * 6, pageNum * 6)} />
-                            <PaginationProp totalPages={Math.ceil(products.length / 6)} onPageUpdate={setPageNum}/>
+                            <ProductList products={products.slice((pageNum - 1) * perPageItems, pageNum * perPageItems)} />
+                            <PaginationProp totalPages={Math.ceil(products.length / perPageItems)} onPageUpdate={setPageNum}/>
                         </div>
                     );
                 }
-            }
+            // }
         }
     };
 
     const onTermSubmit = async term => {
         setProducts([]);
 
-        const response = await rainforest.get('/', {
-            params: {
-                search_term: term,
-            }
-        });
+        try {
+            const response = await rainforest.get('/', {
+                params: {
+                    search_term: term,
+                }
+            });
 
-        setPageTitle(term);
-        setProducts(response.data.search_results);
+
+            setPageTitle(term);
+            setProducts(response.data.search_results);
+        }catch(err){
+            isError.current = true;
+            setProducts([]);
+        }
     };
 
     return (
